@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id ("com.google.gms.google-services")
+    id ("kotlin-kapt")
+    id ("com.google.dagger.hilt.android")
 }
 
 android {
@@ -15,6 +18,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures{
+        viewBinding{
+            enable = true
+        }
     }
 
     buildTypes {
@@ -33,6 +41,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
 
 dependencies {
@@ -42,12 +51,21 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation ("com.google.firebase:firebase-bom:33.1.2")
+    implementation ("com.google.firebase:firebase-database-ktx:21.0.0")
+    implementation ("com.mesibo.api:webrtc:1.0.5")
+    implementation ("com.google.dagger:hilt-android:2.51")
+    kapt ("com.google.dagger:hilt-compiler:2.51")
+    implementation ("com.guolindev.permissionx:permissionx:1.6.1")
+    implementation ("com.google.code.gson:gson:2.8.2")
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation ("org.webrtc:google-webrtc:1.0.32006")
-    implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.9")
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
 }
+
+

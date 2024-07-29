@@ -9,6 +9,7 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven { url = uri("https://maven.google.com") }
     }
 }
 dependencyResolutionManagement {
@@ -16,8 +17,12 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://maven.google.com") }
+
     }
 }
+
+
 
 rootProject.name = "WebRTC"
 include(":app")
